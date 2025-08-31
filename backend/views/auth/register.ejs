@@ -1,0 +1,18 @@
+<%- include('../partials/header', { title: 'Înregistrare' }) %>
+
+<form action="/register" method="POST" class="form-container">
+    <h1>Creează un Cont Nou</h1>
+
+    <div class="form-group">
+        <label for="username">Nume de Utilizator</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Parolă</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit" class="submit-btn">Înregistrare</button>
+    <p>Ai deja cont? <a href="/login">Autentifică-te</a></p>
+</form>
+
+<%- include('../partials/footer') %>

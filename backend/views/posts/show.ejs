@@ -1,0 +1,35 @@
+<%- include('../partials/header', { title: post.title }) %>
+
+<article class="full-post">
+    <h1><%= post.title %></h1>
+    <p class="post-meta">
+        Publicat de: <strong><%= post.User ? post.User.username : 'Necunoscut' %></strong> 
+        la data de <%= post.createdAt.toLocaleDateString('ro-RO') %>
+    </p>
+    <hr>
+    <div class="post-content">
+        <%- post.content.replace(/\r\n/g, '<br>') %>
+    </div>
+</article>
+
+<hr style="margin: 2rem 0;">
+
+<section class="comments-section">
+</section>
+
+<% if (currentUser && currentUser.id === post.userId) { %>
+    <section class="post-actions">
+        <hr>
+        <h3>Acțiuni Administrator</h3>
+        <a href="/posts/<%= post.id %>/edit" class="action-btn edit">Editează Postarea</a>
+
+        <form action="/posts/<%= post.id %>/delete" method="POST" onsubmit="return confirm('Ești sigur că vrei să ștergi definitiv această postare?');" style="display: inline-block; margin-left: 1rem;">
+            <button type="submit" class="action-btn delete">Șterge Postarea</button>
+        </form>
+    </section>
+<% } %>
+
+
+<a href="/" class="back-link" style="display: block; margin-top: 2rem;">&larr; Înapoi la toate postările</a>
+
+<%- include('../partials/footer') %>

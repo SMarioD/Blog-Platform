@@ -1,0 +1,16 @@
+<%- include('../partials/header', { title: 'Creează o Postare Nouă' }) %>
+
+<form action="/posts" method="POST" class="form-container">
+    <h1>Postare Nouă</h1>
+    <div class="form-group">
+        <label for="title">Titlu</label>
+        <input type="text" id="title" name="title" required>
+    </div>
+    <div class="form-group">
+        <label for="content">Conținut</label>
+        <textarea id="content" name="content" rows="10" required></textarea>
+    </div>
+    <button type="submit" class="submit-btn">Publică Postarea</button>
+</form>
+
+<%- include('../partials/footer') %>

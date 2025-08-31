@@ -1,0 +1,22 @@
+<%- include('../partials/header', { title: 'Autentificare' }) %>
+
+<form action="/login" method="POST" class="form-container">
+    <h1>Autentificare</h1>
+    
+    <% if (typeof error !== 'undefined' && error) { %>
+        <p class="error-message"><%= error %></p>
+    <% } %>
+
+    <div class="form-group">
+        <label for="username">Nume de Utilizator</label>
+        <input type="text" id="username" name="username" required>
+    </div>
+    <div class="form-group">
+        <label for="password">Parolă</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+    <button type="submit" class="submit-btn">Autentificare</button>
+    <p>Nu ai cont? <a href="/register">Înregistrează-te</a></p>
+</form>
+
+<%- include('../partials/footer') %>

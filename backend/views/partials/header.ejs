@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= typeof title !== 'undefined' ? title : 'Blog Platform' %></title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header class="main-header">
+        <nav class="container">
+            <a href="/" class="nav-brand">Blog Platform</a>
+            <ul class="nav-links">
+                <% if (currentUser) { %>
+                    <li><span class="nav-welcome">Bun venit, <%= currentUser.username %>!</span></li>
+                    <li><a href="/posts/new">Postare Nouă</a></li>
+                    <li><a href="/logout">Logout</a></li>
+                <% } else { %>
+                    <li><a href="/login">Login</a></li>
+                    <li><a href="/register">Înregistrare</a></li>
+                <% } %>
+            </ul>
+        </nav>
+    </header>
+    <main class="container page-content">
+        <% if (success_msg && success_msg.length > 0) { %>
+            <div class="flash-message success">
+                <%= success_msg %>
+            </div>
+        <% } %>
+        <% if (error_msg && error_msg.length > 0) { %>
+            <div class="flash-message error">
+                <%= error_msg %>
+            </div>
+        <% } %>

@@ -1,0 +1,23 @@
+<%- include('partials/header', { title: 'Acasă - Blog Platform' }) %>
+
+<h1>Ultimele Postări</h1>
+
+<% if (currentUser) { %>
+    <a href="/posts/new" class="submit-btn" style="display: inline-block; text-decoration: none; margin-bottom: 1rem;">Creează o Postare Nouă</a>
+<% } %>
+
+<hr>
+<% if (posts.length > 0) { %>
+    <% posts.forEach(post => { %>
+        <article class="post-summary">
+            <h2><a href="/posts/<%= post.id %>"><%= post.title %></a></h2>
+            <p class="post-meta">Publicat de: <%= post.User ? post.User.username : 'Utilizator necunoscut' %> la <%= post.createdAt.toLocaleDateString('ro-RO') %></p>
+            <p><%= post.content.substring(0, 200) %>...</p>
+            <a href="/posts/<%= post.id %>" class="read-more-link">Citește mai mult</a>
+        </article>
+    <% }) %>
+<% } else { %>
+    <p>Nicio postare încă. Fii primul care scrie una!</p>
+<% } %>
+
+<%- include('partials/footer') %>
